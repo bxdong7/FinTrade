@@ -10,4 +10,4 @@ $$\dfrac{initialValue + (gain/loss)}{initialValue}^\frac{1}{yearsHeld }-1$$
 
 $equation 3$
 
-$$\dfrac{currentValue - initValue}{initialValue}
+$$\dfrac{currentValue - initValue}{initialValue}$$
