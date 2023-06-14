@@ -6,4 +6,4 @@ $${R} = \dfrac{1}{n} \sum_{i=1}^{n}mi*Ri$$
 
 $equation 2$
 
-$$\dfrac{initialValue + (gain/loss)}{initialValue}^1/YearsHeld - 1$$
+$$\dfrac{initialValue + (gain/loss)}{initialValue}^\frac{1}{yearsHeld - 1}$$
