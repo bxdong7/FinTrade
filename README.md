@@ -2,7 +2,7 @@
 
 $equation1$ 
 
-$${R} = \dfrac{1}{n} \sum_{i=1}^{n}mi*Ri$$
+$${R} = \dfrac{1}{n} \sum_{i=1}^{n}m_i*R_i$$
 
 $equation 2$
 
