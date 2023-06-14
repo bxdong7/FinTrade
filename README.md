@@ -2,4 +2,4 @@
 
 $equation1$ 
 
-$${R} = \dfrac{1}{n} \ sum_{i=1}^{\n}$$
+$${R} = \dfrac{1}{n} \sum_{i=1}^{\n}$$
