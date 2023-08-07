@@ -1,0 +1,52 @@
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ModelCreation</span><span class="p">():</span>
+
+    <span class="c1">#Creating Logging env</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+
+    <span class="n">file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;training.log&#39;</span><span class="p">)</span>
+    <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">file_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+
+    <span class="c1">#Creating training env</span>
+
+    <span class="n">window_size</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">start_index</span> <span class="o">=</span> <span class="n">window_size</span>
+    <span class="n">end_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">train_env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+            <span class="s1">&#39;stocks-v0&#39;</span><span class="p">,</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">,</span>
+            <span class="n">window_size</span> <span class="o">=</span> <span class="n">window_size</span><span class="p">,</span>
+            <span class="n">frame_bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="n">end_index</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">val_env1</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+        <span class="s1">&#39;stocks-v0&#39;</span><span class="p">,</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">val_df_1</span><span class="p">,</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="n">window_size</span><span class="p">,</span>
+        <span class="n">frame_bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="n">end_index</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+
+
+    <span class="n">val_env2</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+        <span class="s1">&#39;stocks-v0&#39;</span><span class="p">,</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">val_df_2</span><span class="p">,</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="n">window_size</span><span class="p">,</span>
+        <span class="n">frame_bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="n">end_index</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+
+    <span class="n">val_env3</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+        <span class="s1">&#39;stocks-v0&#39;</span><span class="p">,</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">val_df_3</span><span class="p">,</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="n">window_size</span><span class="p">,</span>
+        <span class="n">frame_bound</span> <span class="o">=</span> <span class="p">(</span><span class="n">start_index</span><span class="p">,</span> <span class="n">end_index</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">env1</span> <span class="o">=</span> <span class="n">DummyVecEnv</span><span class="p">([</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">train_env</span><span class="p">,</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">val_env1</span><span class="p">,</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">val_env2</span><span class="p">,</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">val_env3</span><span class="p">])</span>
+</pre></div>
